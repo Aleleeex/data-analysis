@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Compra - Regresión Logística</title>
+    <style>
+        body {
+            background: #1a1d21;
+            color: #ececf1;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding: 32px 0 0 0;
+            text-align: center;
+            font-size: 2.0rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .input-area {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 32px 0 32px 0;
+            background: #23272f;
+            box-shadow: 0 -2px 16px #0002;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .input-box {
+            background: #343541;
+            color: #ececf1;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 1.05rem;
+            width: 220px;
+        }
+        .input-box:focus { outline: 2px solid #10a37f; }
+        .submit-btn {
+            background: #10a37f;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 16px 24px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover { background: #0e8c6c; }
+        .result-area {
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.2rem;
+            min-height: 40px;
+        }
+        @media (max-width: 520px) { .input-box { width: 90vw; } }
+        .hint { color: #9aa0a6; font-size: .95rem; text-align:center; margin-top: 6px; }
+    </style>
+</head>
+<body>
+    <div class="header">Predicción de Compra (Edad + Salario)</div>
+    <div class="chat-container">
+        <div class="result-area" id="resultado">
+            <!-- Aquí aparecerá el resultado -->
+        </div>
+        <form class="input-area" method="POST" action="/predict">
+            <input class="input-box" type="number" id="edad" name="edad" min="0" step="1" placeholder="Edad" required>
+            <input class="input-box" type="number" id="salario" name="salario" min="0" step="100" placeholder="Salario estimado" required>
+            <button class="submit-btn" type="submit">Predecir</button>
+        </form>
+        <div class="hint">El modelo fue entrenado con las columnas Edad y Salario estimado (escaladas).</div>
+    </div>
+</body>
+</html>
